@@ -1,4 +1,5 @@
 import pandas as pd
+from decimal import Decimal
 from datetime import datetime
 from dataclasses import dataclass
 
@@ -18,3 +19,4 @@ class Statement:
     data: pd.DataFrame
     from_date: datetime
     to_date: datetime
+    available_bal: Decimal

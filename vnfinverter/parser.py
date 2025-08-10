@@ -1,3 +1,4 @@
+from decimal import Decimal
 import re
 import pdfplumber
 import pandas as pd
@@ -46,14 +47,21 @@ def parse_pdf(path: Path) -> Statement:
         assert result == -1, f"{table[result]} does not fit header of length {len(columns)}"
         
         full_table.extend(table)
-        for i in range(1, len(pdf.pages)):
+        for i in range(1, len(pdf.pages) - 1):
             table = pdf.pages[i].extract_table()
             if table:
                 assert result == -1, f"{table[result]} does not fit header of length {len(columns)}"
                 full_table.extend(table)
+
+        table = pdf.pages[-1].extract_table()
+        assert table is not None, "Table not found in last page!"
+        optional_bal = table.pop(-1)[-1]
+        available_bal = float(optional_bal) if optional_bal else 0
+        available_bal = Decimal(available_bal)
     
-    data =  pd.DataFrame(full_table, columns=columns)
-    return Statement(account=account, data=data, **dates)
+    data = pd.DataFrame(full_table, columns=columns)
+
+    return Statement(account=account, data=data, available_bal=available_bal, **dates)
 
 
 
