@@ -15,7 +15,11 @@ requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "NONE"}
 
-[project.dev-dependencies]
+
+[project.scripts]
+vnfinverter = "vnfinverter.cli:main"
+
+[tool.pdm.dev-dependencies]
 dependencies = [
 	"ruff",
 	"pandas-stubs",
