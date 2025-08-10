@@ -19,4 +19,4 @@ class Statement:
     data: pd.DataFrame
     from_date: datetime
     to_date: datetime
-    available_bal: Decimal
+    ledger_bal: Decimal

@@ -56,12 +56,12 @@ def parse_pdf(path: Path) -> Statement:
         table = pdf.pages[-1].extract_table()
         assert table is not None, "Table not found in last page!"
         optional_bal = table.pop(-1)[-1]
-        available_bal = float(optional_bal) if optional_bal else 0
-        available_bal = Decimal(available_bal)
+        ledger_bal = float(optional_bal.replace(",", ".")) if optional_bal else 0
+        ledger_bal = Decimal(ledger_bal)
     
     data = pd.DataFrame(full_table, columns=columns)
 
-    return Statement(account=account, data=data, available_bal=available_bal, **dates)
+    return Statement(account=account, data=data, ledger_bal=ledger_bal, **dates)
 
 
 
