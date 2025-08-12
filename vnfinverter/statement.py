@@ -3,6 +3,7 @@ from decimal import Decimal
 from datetime import datetime
 from dataclasses import dataclass
 
+
 @dataclass
 class Account:
     name: str
@@ -12,6 +13,7 @@ class Account:
     account_type: str
     account_no: int
     account_name: str
+
 
 @dataclass
 class Statement:
