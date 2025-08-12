@@ -12,7 +12,7 @@ def main():
     statement = parse_pdf(Path(args.path))
     ofx_content = to_ofx(statement)
 
-    with open(args.out, "w") as f:
+    with open(args.out, "wb") as f:
         f.write(ofx_content)
 
 if __name__ == "__main__":
