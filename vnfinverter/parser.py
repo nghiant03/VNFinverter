@@ -2,6 +2,7 @@ from decimal import Decimal
 import re
 import pdfplumber
 import pandas as pd
+from zoneinfo import ZoneInfo
 from datetime import datetime
 from typing import Dict, List, Any
 from pathlib import Path
@@ -56,10 +57,11 @@ def parse_pdf(path: Path) -> Statement:
         table = pdf.pages[-1].extract_table()
         assert table is not None, "Table not found in last page!"
         optional_bal = table.pop(-1)[-1]
-        ledger_bal = float(optional_bal.replace(",", ".")) if optional_bal else 0
+        ledger_bal = float(optional_bal.replace(",", "")) if optional_bal else 0
         ledger_bal = Decimal(ledger_bal)
     
     data = pd.DataFrame(full_table, columns=columns)
+    data.dropna(subset=["Nợ TKTT\nDebit","Có TKTT\nCredit"], inplace=True)
 
     return Statement(account=account, data=data, ledger_bal=ledger_bal, **dates)
 
@@ -86,8 +88,8 @@ def extract_account(text) -> Dict[str, Any]:
 
 def extract_dates(text):
     return {
-        "from_date": datetime.strptime(grab(DATE_PATTERNS["from_date"], text), "%d/%m/%Y"),
-        "to_date": datetime.strptime(grab(DATE_PATTERNS["to_date"], text), "%d/%m/%Y"),
+        "from_date": datetime.strptime(grab(DATE_PATTERNS["from_date"], text), "%d/%m/%Y").astimezone(ZoneInfo("Asia/Ho_Chi_Minh")),
+        "to_date": datetime.strptime(grab(DATE_PATTERNS["to_date"], text), "%d/%m/%Y").astimezone(ZoneInfo("Asia/Ho_Chi_Minh")),
     }
 
 def validate_table(columns: List[str | None], table: List[List[str | None]]) -> int:
