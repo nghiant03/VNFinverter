@@ -1,7 +1,8 @@
 import argparse
 from pathlib import Path
-from vnfinverter.parser import parse_pdf
+
 from vnfinverter.converter import to_ofx
+from vnfinverter.parser import parse_pdf
 
 
 def main():

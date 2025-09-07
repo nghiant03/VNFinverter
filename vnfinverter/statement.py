@@ -1,7 +1,8 @@
-import pandas as pd
-from decimal import Decimal
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
+from decimal import Decimal
+
+import pandas as pd
 
 
 @dataclass

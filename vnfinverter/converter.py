@@ -1,23 +1,24 @@
-import pandas as pd
-from decimal import Decimal
-from zoneinfo import ZoneInfo
+import xml.etree.ElementTree as ET
 from datetime import datetime
+from decimal import Decimal
+from typing import Tuple
+from zoneinfo import ZoneInfo
+
+import pandas as pd
 from ofxtools.header import make_header
 from ofxtools.models import (
+    BANKACCTFROM,
+    BANKMSGSRSV1,
     BANKTRANLIST,
     LEDGERBAL,
     SIGNONMSGSRSV1,
+    SONRS,
     STATUS,
     STMTRS,
-    BANKMSGSRSV1,
-    SONRS,
-    STMTTRNRS,
-    BANKACCTFROM,
     STMTTRN,
+    STMTTRNRS,
 )
 from ofxtools.models.ofx import OFX
-import xml.etree.ElementTree as ET
-from typing import Tuple
 
 from vnfinverter.statement import Statement
 
