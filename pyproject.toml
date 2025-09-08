@@ -17,7 +17,7 @@ license = {text = "NONE"}
 
 
 [project.scripts]
-vnfinverter = "vnfinverter.cli:main"
+vnfinverter = "vnfinverter:main"
 
 [tool.pdm.dev-dependencies]
 dependencies = [
