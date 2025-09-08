@@ -5,7 +5,7 @@ from vnfinverter.converter import to_ofx
 from vnfinverter.parser import parse_pdf
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(description="VNFinverter")
     parser.add_argument("--path", help="Path to PDF", required=True)
     parser.add_argument("--out", help="Output file path", required=True)
@@ -17,6 +17,4 @@ def main():
     with open(args.out, "wb") as f:
         f.write(ofx_content)
 
-
-if __name__ == "__main__":
-    main()
+    return 0 
