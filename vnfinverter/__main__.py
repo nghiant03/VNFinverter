@@ -1,5 +1,5 @@
 import sys
 
-from vnfinverter.cli import main
+from vnfinverter.cli import app
 
-sys.exit(main())
+sys.exit(app())

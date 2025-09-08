@@ -1,7 +1,7 @@
 [project]
 name = "vnfinverter"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "Convert pdf files from Vietnamese banks to standard financial format"
 authors = [
     {name = "Nguyen Tri Nghia", email = "nghiant@mailbox.org"},
 ]
@@ -9,7 +9,8 @@ dependencies = [
 	"loguru",
 	"pdfplumber",
 	"pandas",
-	"ofxtools"
+	"ofxtools",
+	"typer"
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
