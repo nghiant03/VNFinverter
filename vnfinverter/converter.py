@@ -25,7 +25,7 @@ from vnfinverter.statement import Statement
 
 def to_ofx(statement: Statement) -> bytes:
     ledger_bal = LEDGERBAL(balamt=statement.ledger_bal, dtasof=statement.to_date)
-    account = BANKACCTFROM(bankid="1903", acctid=statement.account.account_no, accttype="CHECKING")
+    account = BANKACCTFROM(bankid="VTCBVNVXXXX", acctid=statement.account.account_no, accttype="CHECKING")
     transaction_list = []
     for _, row in statement.data.iterrows():
         transaction_type, amount = transaction_data(row)

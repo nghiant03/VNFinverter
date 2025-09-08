@@ -53,6 +53,8 @@ def parse_pdf(path: Path) -> Statement:
         for i in range(1, len(pdf.pages) - 1):
             table = pdf.pages[i].extract_table()
             if table:
+                columns = table.pop(0)
+                result = validate_table(columns, table)
                 assert result == -1, f"{table[result]} does not fit header of length {len(columns)}"
                 full_table.extend(table)
 
