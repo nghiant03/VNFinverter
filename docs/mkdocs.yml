@@ -8,7 +8,10 @@ site_url: !ENV READTHEDOCS_CANONICAL_URL
 docs_dir: .
 
 extra_javascript:
-    - javascript/readthedocs.js
+  - javascript/readthedocs.js
+
+plugin:
+  - mkdocstrings
 
 nav:
   - Home: index.md
