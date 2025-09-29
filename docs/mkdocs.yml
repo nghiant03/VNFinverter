@@ -9,3 +9,6 @@ docs_dir: .
 
 extra_javascript:
     - javascript/readthedocs.js
+
+nav:
+  - Home: index.md
