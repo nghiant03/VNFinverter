@@ -11,7 +11,8 @@ dependencies = [
 	"pandas>=2.3.2",
 	"ofxtools>=0.9.5",
 	"typer>=0.19.2",
-	"openpyxl>=3.1.5"
+	"openpyxl>=3.1.5",
+	"pydantic>=2.11.9"
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
@@ -22,6 +23,10 @@ dev = [
     "ruff>=0.13.2",
     "pandas-stubs>=2.3.2.250926",
     "pytest>=8.4.2",
+]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.6.20",
 ]
 
 [project.scripts]

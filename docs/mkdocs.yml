@@ -1,0 +1,9 @@
+site_name: VNFinverter
+
+theme:
+  name: material
+
+site_url: !ENV READTHEDOCS_CANONICAL_URL
+
+extra_javascript:
+    - javascript/readthedocs.js
