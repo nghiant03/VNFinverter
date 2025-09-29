@@ -10,7 +10,7 @@ docs_dir: .
 extra_javascript:
   - javascript/readthedocs.js
 
-plugin:
+plugins:
   - mkdocstrings
 
 nav:
